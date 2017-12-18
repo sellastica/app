@@ -32,11 +32,11 @@ class AppRelations implements IEntityRelations
 	}
 
 	/**
-	 * @return \Application\Domain\Model\InstalledApp|IEntity|null
+	 * @return \Sellastica\App\Entity\InstalledApp|IEntity|null
 	 */
-	public function getInstalledApp(): ?\Application\Domain\Model\InstalledApp
+	public function getInstalledApp(): ?\Sellastica\App\Entity\InstalledApp
 	{
-		return $this->em->getRepository(\Application\Domain\Model\InstalledApp::class)->findOneBy(['slug' => $this->entity->getSlug()]);
+		return $this->em->getRepository(\Sellastica\App\Entity\InstalledApp::class)->findOneBy(['slug' => $this->entity->getSlug()]);
 	}
 
 	/**

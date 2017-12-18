@@ -38,7 +38,7 @@ class App extends AbstractEntity implements IProxable
 	/** @var bool @optional */
 	private $visible = false;
 
-	/** @var \Application\Domain\Model\InstalledApp|null */
+	/** @var \Sellastica\App\Entity\InstalledApp|null */
 	private $installedApp;
 
 	/** @var GlobalCustomFieldCollection|\Sellastica\CustomField\Entity\GlobalCustomField[] */
@@ -139,9 +139,9 @@ class App extends AbstractEntity implements IProxable
 	}
 
 	/**
-	 * @return \Application\Domain\Model\InstalledApp|null
+	 * @return \Sellastica\App\Entity\InstalledApp|null
 	 */
-	public function getInstalledApp(): ?\Application\Domain\Model\InstalledApp
+	public function getInstalledApp(): ?\Sellastica\App\Entity\InstalledApp
 	{
 		if (!isset($this->installedApp)) {
 			$this->installedApp = $this->relationService->getInstalledApp();
