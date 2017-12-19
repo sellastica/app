@@ -32,14 +32,6 @@ class AppRelations implements IEntityRelations
 	}
 
 	/**
-	 * @return \Sellastica\App\Entity\InstalledApp|IEntity|null
-	 */
-	public function getInstalledApp(): ?\Sellastica\App\Entity\InstalledApp
-	{
-		return $this->em->getRepository(\Sellastica\App\Entity\InstalledApp::class)->findOneBy(['slug' => $this->entity->getSlug()]);
-	}
-
-	/**
 	 * @return GlobalCustomField[]|GlobalCustomFieldCollection
 	 */
 	public function getCustomFields(): GlobalCustomFieldCollection

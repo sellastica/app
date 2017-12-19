@@ -10,7 +10,6 @@ use Sellastica\CustomField\Model\CustomFieldType;
 use Sellastica\Entity\Entity\AbstractEntity;
 use Sellastica\Entity\Entity\TAbstractEntity;
 use Sellastica\Entity\Event\EntityCreated;
-use Sellastica\Entity\Event\EntityRemoved;
 use Sellastica\Twig\Model\IProxable;
 use Sellastica\Twig\Model\ProxyConverter;
 use Sellastica\Utils\Camelized;
@@ -37,9 +36,6 @@ class App extends AbstractEntity implements IProxable
 	private $internal = false;
 	/** @var bool @optional */
 	private $visible = false;
-
-	/** @var \Sellastica\App\Entity\InstalledApp|null */
-	private $installedApp;
 
 	/** @var GlobalCustomFieldCollection|\Sellastica\CustomField\Entity\GlobalCustomField[] */
 	private $customFields;
@@ -136,34 +132,6 @@ class App extends AbstractEntity implements IProxable
 	public function isVisible(): bool
 	{
 		return $this->visible;
-	}
-
-	/**
-	 * @return \Sellastica\App\Entity\InstalledApp|null
-	 */
-	public function getInstalledApp(): ?\Sellastica\App\Entity\InstalledApp
-	{
-		if (!isset($this->installedApp)) {
-			$this->installedApp = $this->relationService->getInstalledApp();
-		}
-
-		return $this->installedApp;
-	}
-
-	/**
-	 * @return bool
-	 */
-	public function isInstalled(): bool
-	{
-		return (bool)$this->getInstalledApp();
-	}
-
-	public function uninstall()
-	{
-		if ($this->isInstalled()) {
-			$this->eventPublisher->publish(new EntityRemoved($this->getInstalledApp()));
-			$this->installedApp = null;
-		}
 	}
 
 	/**

@@ -10,10 +10,11 @@ use Sellastica\Entity\Mapping\RepositoryProxy;
  */
 class AppRepositoryProxy extends RepositoryProxy implements IAppRepository
 {
-	/**
-	 * @param string $slug
-	 * @return App|\Sellastica\Entity\Entity\IEntity|null
-	 */
+	public function isInstalled(int $projectId, int $applicationId): bool
+	{
+		return $this->getRepository()->isInstalled($projectId, $applicationId);
+	}
+
 	public function findBySlug(string $slug)
 	{
 		return $this->getRepository()->findBySlug($slug);

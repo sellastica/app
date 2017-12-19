@@ -24,6 +24,16 @@ class AppDao extends \Sellastica\Entity\Mapping\Dao
 	}
 
 	/**
+	 * @param int $projectId
+	 * @param int $applicationId
+	 * @return bool
+	 */
+	public function isInstalled(int $projectId, int $applicationId): bool
+	{
+		return $this->mapper->isInstalled($projectId, $applicationId);
+	}
+
+	/**
 	 * @return EntityCollection|AppCollection
 	 */
 	protected function getEmptyCollection(): EntityCollection

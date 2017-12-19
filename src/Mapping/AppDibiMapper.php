@@ -15,6 +15,20 @@ class AppDibiMapper extends \Sellastica\Entity\Mapping\DibiMapper
 	}
 
 	/**
+	 * @param int $projectId
+	 * @param int $applicationId
+	 * @return bool
+	 */
+	public function isInstalled(int $projectId, int $applicationId): bool
+	{
+		return (bool)$this->database->select(1)
+			->from('%n.app_project_rel', $this->environment->getCrmDatabaseName())
+			->where('projectId = %i', $projectId)
+			->where('applicationId = %i', $applicationId)
+			->fetchSingle();
+	}
+
+	/**
 	 * @param Configuration $configuration
 	 * @return Dibi\Fluent
 	 */

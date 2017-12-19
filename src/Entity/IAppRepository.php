@@ -18,6 +18,13 @@ use Sellastica\Entity\Mapping\IRepository;
 interface IAppRepository extends IRepository
 {
 	/**
+	 * @param int $projectId
+	 * @param int $applicationId
+	 * @return bool
+	 */
+	function isInstalled(int $projectId, int $applicationId): bool;
+
+	/**
 	 * @param string $slug
 	 * @return \Sellastica\App\Entity\App|\Sellastica\Entity\Entity\IEntity|null
 	 */

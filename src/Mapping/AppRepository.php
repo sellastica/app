@@ -12,6 +12,16 @@ use Sellastica\Entity\Mapping\Repository;
 class AppRepository extends Repository implements IAppRepository
 {
 	/**
+	 * @param int $projectId
+	 * @param int $applicationId
+	 * @return bool
+	 */
+	public function isInstalled(int $projectId, int $applicationId): bool
+	{
+		return $this->dao->isInstalled($projectId, $applicationId);
+	}
+
+	/**
 	 * @param string $slug
 	 * @return App|IEntity|null
 	 */
