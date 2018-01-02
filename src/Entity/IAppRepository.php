@@ -19,6 +19,16 @@ interface IAppRepository extends IRepository
 {
 	/**
 	 * @param int $projectId
+	 * @param \Sellastica\Entity\Configuration|null $configuration
+	 * @return AppCollection
+	 */
+	public function findAllInstalled(
+		int $projectId,
+		\Sellastica\Entity\Configuration $configuration = null
+	): AppCollection;
+
+	/**
+	 * @param int $projectId
 	 * @param int $applicationId
 	 * @return bool
 	 */

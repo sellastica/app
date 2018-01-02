@@ -10,6 +10,14 @@ use Sellastica\Entity\Mapping\RepositoryProxy;
  */
 class AppRepositoryProxy extends RepositoryProxy implements IAppRepository
 {
+	public function findAllInstalled(
+		int $projectId,
+		\Sellastica\Entity\Configuration $configuration = null
+	): \Sellastica\App\Entity\AppCollection
+	{
+		return $this->getRepository()->findAllInstalled($projectId, $configuration);
+	}
+
 	public function isInstalled(int $projectId, int $applicationId): bool
 	{
 		return $this->getRepository()->isInstalled($projectId, $applicationId);

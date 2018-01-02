@@ -25,6 +25,19 @@ class AppDao extends \Sellastica\Entity\Mapping\Dao
 
 	/**
 	 * @param int $projectId
+	 * @param \Sellastica\Entity\Configuration|null $configuration
+	 * @return AppCollection
+	 */
+	public function findAllInstalled(
+		int $projectId,
+		\Sellastica\Entity\Configuration $configuration = null
+	): AppCollection
+	{
+		return $this->getEntitiesFromCacheOrStorage($this->mapper->findAllInstalled($projectId, $configuration));
+	}
+
+	/**
+	 * @param int $projectId
 	 * @param int $applicationId
 	 * @return bool
 	 */

@@ -13,6 +13,19 @@ class AppRepository extends Repository implements IAppRepository
 {
 	/**
 	 * @param int $projectId
+	 * @param \Sellastica\Entity\Configuration|null $configuration
+	 * @return \Sellastica\App\Entity\AppCollection
+	 */
+	public function findAllInstalled(
+		int $projectId,
+		\Sellastica\Entity\Configuration $configuration = null
+	): \Sellastica\App\Entity\AppCollection
+	{
+		return $this->initialize($this->dao->findAllInstalled($projectId, $configuration));
+	}
+
+	/**
+	 * @param int $projectId
 	 * @param int $applicationId
 	 * @return bool
 	 */

@@ -16,6 +16,20 @@ class AppDibiMapper extends \Sellastica\Entity\Mapping\DibiMapper
 
 	/**
 	 * @param int $projectId
+	 * @param Configuration|null $configuration
+	 * @return array
+	 */
+	public function findAllInstalled(int $projectId, Configuration $configuration = null): array
+	{
+		return $this->getResourceWithIds($configuration)
+			->innerJoin('app_project_rel apr')
+			->on('apr.applicationId = %n.id', $this->getTableName(true))
+			->where('apr.projectId = %i', $projectId)
+			->fetchPairs();
+	}
+
+	/**
+	 * @param int $projectId
 	 * @param int $applicationId
 	 * @return bool
 	 */
@@ -32,7 +46,7 @@ class AppDibiMapper extends \Sellastica\Entity\Mapping\DibiMapper
 	 * @param Configuration $configuration
 	 * @return Dibi\Fluent
 	 */
-	protected function getPublishableResource(Configuration $configuration = NULL)
+	protected function getPublishableResource(Configuration $configuration = null)
 	{
 		return parent::getResource($configuration)
 			->where('installed = 1')
