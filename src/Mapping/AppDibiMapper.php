@@ -22,7 +22,7 @@ class AppDibiMapper extends \Sellastica\Entity\Mapping\DibiMapper
 	public function findAllInstalled(int $projectId, Configuration $configuration = null): array
 	{
 		return $this->getResourceWithIds($configuration)
-			->innerJoin('app_project_rel apr')
+			->innerJoin('%n.app_project_rel apr', $this->environment->getCrmDatabaseName())
 			->on('apr.applicationId = %n.id', $this->getTableName(true))
 			->where('apr.projectId = %i', $projectId)
 			->fetchPairs();
