@@ -49,7 +49,7 @@ class AppDao extends \Sellastica\Entity\Mapping\Dao
 	/**
 	 * @return EntityCollection|AppCollection
 	 */
-	protected function getEmptyCollection(): EntityCollection
+	public function getEmptyCollection(): EntityCollection
 	{
 		return new AppCollection();
 	}
