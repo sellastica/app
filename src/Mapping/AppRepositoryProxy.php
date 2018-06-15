@@ -1,7 +1,6 @@
 <?php
 namespace Sellastica\App\Mapping;
 
-use Sellastica\App\Entity\App;
 use Sellastica\App\Entity\IAppRepository;
 use Sellastica\Entity\Mapping\RepositoryProxy;
 
