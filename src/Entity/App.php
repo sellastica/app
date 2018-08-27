@@ -36,6 +36,8 @@ class App extends AbstractEntity implements IProxable
 	private $internal = false;
 	/** @var bool @optional */
 	private $visible = false;
+	/** @var int @optional */
+	private $version;
 
 	/** @var GlobalCustomFieldCollection|\Sellastica\CustomField\Entity\GlobalCustomField[] */
 	private $customFields;
@@ -135,6 +137,14 @@ class App extends AbstractEntity implements IProxable
 	}
 
 	/**
+	 * @return int
+	 */
+	public function getVersion(): int
+	{
+		return $this->version;
+	}
+
+	/**
 	 * @return GlobalCustomFieldCollection|\Sellastica\CustomField\Entity\GlobalCustomField[]
 	 */
 	public function getCustomFields(): GlobalCustomFieldCollection
@@ -210,6 +220,7 @@ class App extends AbstractEntity implements IProxable
 			'slug' => $this->getSlug(),
 			'internal' => $this->internal,
 			'visible' => $this->visible,
+			'version' => $this->version,
 		]);
 	}
 

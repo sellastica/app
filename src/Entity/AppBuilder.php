@@ -22,6 +22,8 @@ class AppBuilder implements IBuilder
 	private $internal = false;
 	/** @var bool */
 	private $visible = false;
+	/** @var int */
+	private $version;
 
 	/**
 	 * @param string $title
@@ -103,6 +105,24 @@ class AppBuilder implements IBuilder
 	public function visible(bool $visible)
 	{
 		$this->visible = $visible;
+		return $this;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getVersion(): int
+	{
+		return $this->version;
+	}
+
+	/**
+	 * @param int $version
+	 * @return $this
+	 */
+	public function version(int $version)
+	{
+		$this->version = $version;
 		return $this;
 	}
 

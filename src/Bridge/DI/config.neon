@@ -1,7 +1,6 @@
 services:
 	appRepository:
 		class: Sellastica\App\Mapping\AppRepository(@extension.appDao, @extension.appFactory)
-		autowired: no
 	appDao: Sellastica\App\Mapping\AppDao(@extension.appMapper, @extension.appFactory)
 	appMapper: Sellastica\App\Mapping\AppDibiMapper
 	appRepositoryProxy: Sellastica\App\Mapping\AppRepositoryProxy
